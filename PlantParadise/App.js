@@ -14,7 +14,11 @@ export default function App() {
       <StatusBar style="auto" />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Inicial" component={Initial} />
+          <Stack.Screen
+            name="Inicial"
+            component={Initial}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="Home" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
