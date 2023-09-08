@@ -37,7 +37,7 @@ function HomeTab() {
         name="Home"
         component={Home}
         options={{
-          headerShown: true,
+          headerShown: false,
 
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={30} color={color} />
