@@ -98,7 +98,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  altura: {
-    height: 40,
-  },
 });
