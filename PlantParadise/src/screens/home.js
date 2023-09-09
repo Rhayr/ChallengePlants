@@ -72,15 +72,12 @@ function Home() {
             </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        >
+        <View style={{ flex: 1 }}>
           <FlatList
             data={filteredPlants}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => <PlantItemVertical planta={item} />}
           />
-          <View />
         </View>
       </View>
     </View>

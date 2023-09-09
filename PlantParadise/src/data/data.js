@@ -2,7 +2,7 @@ const plants = [
   {
     id: 1,
     nome: 'Green Vines',
-    preco: 9.2,
+    preco: 9.25,
     descricao: 'Lindo para ficar em casa',
     imagem: require('../../assets/plantinha1.png'),
     categoria: 'indoor',
