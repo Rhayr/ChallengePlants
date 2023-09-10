@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: GlobalStyles.colors.primaryColor,
     paddingVertical: 3,
+    paddingHorizontal: 10,
     marginRight: 8,
     borderRadius: 12,
-    bottom: -30,
   },
   text: {
     color: 'white',

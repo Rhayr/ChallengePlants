@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
@@ -6,12 +7,20 @@ import AddToCartButton from './atomns/cartButton';
 
 function PlantItemHorizontal({ planta }) {
   const [isFavorited, setIsFavorited] = useState(false);
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Image source={planta.imagem} style={styles.imagem} />
-      <View style={styles.textContainer}>
-        <Text style={styles.nome}>{planta.nome}</Text>
-        <Text style={styles.preco}>${planta.preco}</Text>
+      <TouchableOpacity
+        style={styles.infoContainer}
+        onPress={() => navigation.navigate('Details', { planta })}
+      >
+        <Image source={planta.imagem} style={styles.imagem} />
+        <View style={styles.textContainer}>
+          <Text style={styles.nome}>{planta.nome}</Text>
+          <Text style={styles.preco}>${planta.preco}</Text>
+        </View>
+      </TouchableOpacity>
+      <View style={styles.addToCartButtonContainer}>
         <AddToCartButton onPress={() => {}} />
       </View>
       <View style={styles.favoriteIconContainer}>
@@ -29,13 +38,15 @@ function PlantItemHorizontal({ planta }) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     margin: 8,
     backgroundColor: GlobalStyles.colors.primary0,
     borderRadius: 8,
     elevation: 3,
     height: 140,
     marginLeft: 24,
+  },
+  infoContainer: {
+    flexDirection: 'row',
   },
   imagem: {
     width: 150,
@@ -68,6 +79,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5,
+  },
+  addToCartButtonContainer: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

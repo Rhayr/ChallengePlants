@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
@@ -6,14 +7,21 @@ import { FontAwesome } from '@expo/vector-icons';
 function PlantItemVertical({ planta }) {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Image source={planta.imagem} style={styles.imagem} />
-      <View style={styles.textContainer}>
-        <Text style={styles.nome}>{planta.nome}</Text>
-        <Text style={styles.preco}>${planta.preco}</Text>
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Details', { planta })}
+        style={{ flex: 1 }}
+      >
+        <Image source={planta.imagem} style={styles.imagem} />
+        <View style={styles.textContainer}>
+          <Text style={styles.nome}>{planta.nome}</Text>
+          <Text style={styles.preco}>${planta.preco}</Text>
+        </View>
+      </TouchableOpacity>
+
       <View style={styles.favoriteIconContainer}>
         <TouchableOpacity onPress={() => setIsFavorited(!isFavorited)}>
           <FontAwesome
@@ -23,6 +31,7 @@ function PlantItemVertical({ planta }) {
           />
         </TouchableOpacity>
       </View>
+
       <View
         style={[
           styles.cartButton,
