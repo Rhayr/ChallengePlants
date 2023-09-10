@@ -51,9 +51,15 @@ function HomeTab() {
         component={Favorites}
         options={{
           headerShown: true,
+          headerTitleAlign: 'left',
+          headerTitleStyle: { fontSize: 24 },
           tabBarIcon: ({ color }) => (
             <Ionicons name="heart" size={30} color={color} />
           ),
+          headerStyle: {
+            borderBottomWidth: 0,
+            elevation: 0,
+          },
         }}
       />
       <BottomTabs.Screen

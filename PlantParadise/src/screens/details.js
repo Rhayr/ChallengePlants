@@ -63,7 +63,7 @@ function PlantDetail({ navigation, route }) {
         <Text style={styles.textContainer}>{planta.nome}</Text>
       </View>
       <View style={styles.precoContainer}>
-        <Text style={styles.precoo}>${planta.preco}</Text>
+        <Text style={styles.precoo}>${planta.preco.toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
             onPress={decrementQuantity}
@@ -94,7 +94,9 @@ function PlantDetail({ navigation, route }) {
       <View style={styles.cartBar}>
         <View style={styles.containerCartBar}>
           <Text>Total price</Text>
-          <Text style={styles.cartTotal}>${planta.preco * quantity}</Text>
+          <Text style={styles.cartTotal}>
+            ${(planta.preco * quantity).toFixed(2)}
+          </Text>
         </View>
         <AddToCartButton style={styles.addToCartButton} onPress={() => {}} />
       </View>

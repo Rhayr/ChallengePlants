@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useFavorites } from '../src/data/FavoriteContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 
-function PlantItemVertical({ planta }) {
+function PlantFavorite({ planta }) {
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.some((fav) => fav.id === planta.id);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
+        style={styles.infoContainer}
         onPress={() => navigation.navigate('Details', { planta })}
-        style={{ flex: 1 }}
       >
         <Image source={planta.imagem} style={styles.imagem} />
         <View style={styles.textContainer}>
@@ -33,56 +32,45 @@ function PlantItemVertical({ planta }) {
           />
         </TouchableOpacity>
       </View>
-
-      <View
-        style={[
-          styles.cartButton,
-          isAddedToCart ? styles.cartButtonSelected : {},
-        ]}
-      >
-        <TouchableOpacity onPress={() => setIsAddedToCart(!isAddedToCart)}>
-          <FontAwesome
-            name="shopping-cart"
-            size={22}
-            color={isAddedToCart ? 'white' : 'black'}
-          />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: GlobalStyles.colors.primaryBackground,
+    margin: 8,
+    backgroundColor: GlobalStyles.colors.secondaryBackground,
     borderRadius: 8,
-    elevation: 3,
-    height: 279,
-    marginHorizontal: 24,
-    marginVertical: 8,
+    height: 72,
+    marginLeft: 24,
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    height: 72,
   },
   imagem: {
-    width: '100%',
-    height: 209,
-    marginBottom: 10,
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    width: 92,
+    height: '100%',
+    borderRadius: 8,
   },
   textContainer: {
-    marginHorizontal: 10,
+    flex: 1,
+    marginLeft: 8,
   },
   nome: {
     fontSize: 16,
-    fontWeight: 'bold',
+    marginLeft: 8,
+    paddingVertical: 8,
+    marginRight: 64,
   },
   preco: {
-    fontSize: 14,
-    marginTop: 5,
+    marginLeft: 8,
+    fontWeight: 'bold',
   },
   favoriteIconContainer: {
     position: 'absolute',
-    top: 10,
-    left: 10,
+    bottom: 17,
+    right: 20,
     width: 40,
     height: 40,
     backgroundColor: 'white',
@@ -90,22 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 5,
-  },
-  cartButton: {
-    position: 'absolute',
-    bottom: 15,
-    right: 15,
-    width: 40,
-    height: 40,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5,
-  },
-  cartButtonSelected: {
-    backgroundColor: GlobalStyles.colors.primaryColor,
   },
 });
 
-export default PlantItemVertical;
+export default PlantFavorite;

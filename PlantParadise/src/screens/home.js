@@ -33,6 +33,7 @@ function Home() {
       <View style={{ flex: 1 }}>
         <View>
           <FlatList
+            overScrollMode="never"
             horizontal
             data={plants}
             keyExtractor={(item) => item.id.toString()}
@@ -74,6 +75,7 @@ function Home() {
         </View>
         <View style={{ flex: 1 }}>
           <FlatList
+            overScrollMode="never"
             data={filteredPlants}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => <PlantItemVertical planta={item} />}

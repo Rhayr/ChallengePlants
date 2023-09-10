@@ -23,6 +23,38 @@ const plants = [
     imagem: require('../../assets/plantinha1.png'),
     categoria: 'indoor',
   },
+  {
+    id: 4,
+    nome: 'Green Vines',
+    preco: 10.5,
+    descricao: 'Cuide de uma planta',
+    imagem: require('../../assets/plantinha1.png'),
+    categoria: 'indoor',
+  },
+  {
+    id: 5,
+    nome: 'Green Vines',
+    preco: 10.5,
+    descricao: 'Cuide de uma planta',
+    imagem: require('../../assets/plantinha1.png'),
+    categoria: 'indoor',
+  },
+  {
+    id: 6,
+    nome: 'Green Vines',
+    preco: 9.99,
+    descricao: 'Uma bela planta',
+    imagem: require('../../assets/plantinha2.png'),
+    categoria: 'outdoor',
+  },
+  {
+    id: 7,
+    nome: 'Green Vines',
+    preco: 9.99,
+    descricao: 'Uma bela planta',
+    imagem: require('../../assets/plantinha2.png'),
+    categoria: 'outdoor',
+  },
 ];
 
 export default plants;

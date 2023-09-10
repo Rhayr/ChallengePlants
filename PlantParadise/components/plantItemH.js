@@ -19,7 +19,7 @@ function PlantItemHorizontal({ planta }) {
         <Image source={planta.imagem} style={styles.imagem} />
         <View style={styles.textContainer}>
           <Text style={styles.nome}>{planta.nome}</Text>
-          <Text style={styles.preco}>${planta.preco}</Text>
+          <Text style={styles.preco}>${planta.preco.toFixed(2)}</Text>
         </View>
       </TouchableOpacity>
       <View style={styles.addToCartButtonContainer}>
