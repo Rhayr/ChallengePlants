@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useFavorites } from '../data/FavoriteContext';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import AddToCartButton from '../../components/atomns/cartButton';
 import { GlobalStyles } from '../../constants/styles';
@@ -6,7 +7,9 @@ import { FontAwesome } from '@expo/vector-icons';
 
 function PlantDetail({ navigation, route }) {
   const { planta } = route.params;
-  const [isFavorited, setIsFavorited] = useState(false);
+  const { favorites, toggleFavorite } = useFavorites();
+  const isPlantFavorited = favorites.some((fav) => fav.id === planta.id);
+  const [isFavorited, setIsFavorited] = useState(isPlantFavorited);
   const [quantity, setQuantity] = useState(1);
   const [isIncrementPressed, setIsIncrementPressed] = useState(false);
   const [isDecrementPressed, setIsDecrementPressed] = useState(false);
@@ -35,7 +38,12 @@ function PlantDetail({ navigation, route }) {
         </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => setIsFavorited(!isFavorited)}>
+        <TouchableOpacity
+          onPress={() => {
+            toggleFavorite(planta);
+            setIsFavorited((prev) => !prev);
+          }}
+        >
           <FontAwesome
             name={isFavorited ? 'heart' : 'heart-o'}
             size={24}

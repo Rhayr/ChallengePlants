@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFavorites } from '../src/data/FavoriteContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
@@ -6,7 +7,8 @@ import { FontAwesome } from '@expo/vector-icons';
 import AddToCartButton from './atomns/cartButton';
 
 function PlantItemHorizontal({ planta }) {
-  const [isFavorited, setIsFavorited] = useState(false);
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorited = favorites.some((fav) => fav.id === planta.id);
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -24,9 +26,9 @@ function PlantItemHorizontal({ planta }) {
         <AddToCartButton onPress={() => {}} />
       </View>
       <View style={styles.favoriteIconContainer}>
-        <TouchableOpacity onPress={() => setIsFavorited(!isFavorited)}>
+        <TouchableOpacity onPress={() => toggleFavorite(planta)}>
           <FontAwesome
-            name="heart-o"
+            name={isFavorited ? 'heart' : 'heart-o'}
             size={22}
             color={isFavorited ? GlobalStyles.colors.primaryColor : 'black'}
           />

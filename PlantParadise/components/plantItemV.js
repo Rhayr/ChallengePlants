@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useFavorites } from '../src/data/FavoriteContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 
 function PlantItemVertical({ planta }) {
-  const [isFavorited, setIsFavorited] = useState(false);
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFavorited = favorites.some((fav) => fav.id === planta.id);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const navigation = useNavigation();
 
@@ -23,9 +25,9 @@ function PlantItemVertical({ planta }) {
       </TouchableOpacity>
 
       <View style={styles.favoriteIconContainer}>
-        <TouchableOpacity onPress={() => setIsFavorited(!isFavorited)}>
+        <TouchableOpacity onPress={() => toggleFavorite(planta)}>
           <FontAwesome
-            name="heart-o"
+            name={isFavorited ? 'heart' : 'heart-o'}
             size={22}
             color={isFavorited ? GlobalStyles.colors.primaryColor : 'black'}
           />
