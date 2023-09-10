@@ -2,9 +2,9 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { GlobalStyles } from '../../constants/styles';
 
-function AddToCartButton({ onPress }) {
+function AddToCartButton({ onPress, style }) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
       <Text style={styles.text}>Add to cart</Text>
     </TouchableOpacity>
   );
@@ -12,10 +12,9 @@ function AddToCartButton({ onPress }) {
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 10,
     backgroundColor: GlobalStyles.colors.primaryColor,
     paddingVertical: 3,
-    paddingHorizontal: 10,
+    paddingHorizontal: 27,
     marginRight: 8,
     borderRadius: 12,
   },

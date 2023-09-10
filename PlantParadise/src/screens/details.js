@@ -1,18 +1,95 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import AddToCartButton from '../../components/atomns/cartButton';
 import { GlobalStyles } from '../../constants/styles';
+import { FontAwesome } from '@expo/vector-icons';
 
-function PlantDetail({ route }) {
+function PlantDetail({ navigation, route }) {
   const { planta } = route.params;
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [isIncrementPressed, setIsIncrementPressed] = useState(false);
+  const [isDecrementPressed, setIsDecrementPressed] = useState(false);
 
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  };
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitleAlign: 'center',
+      headerLeft: () => (
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <FontAwesome
+            name="angle-left"
+            size={30}
+            color="#000"
+            style={{ marginLeft: 15 }}
+          />
+        </TouchableOpacity>
+      ),
+      headerRight: () => (
+        <TouchableOpacity onPress={() => setIsFavorited(!isFavorited)}>
+          <FontAwesome
+            name={isFavorited ? 'heart' : 'heart-o'}
+            size={24}
+            color={isFavorited ? GlobalStyles.colors.primaryColor : '#000'}
+            style={{ marginRight: 15 }}
+          />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation, isFavorited]);
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={planta.imagem} style={styles.imagem} />
       </View>
-      <Text>{planta.nome}</Text>
-      <Text>{planta.preco}</Text>
-      <Text>{planta.descricao}</Text>
+      <View>
+        <Text style={styles.textContainer}>{planta.nome}</Text>
+      </View>
+      <View style={styles.precoContainer}>
+        <Text style={styles.precoo}>${planta.preco}</Text>
+        <View style={styles.quantityContainer}>
+          <TouchableOpacity
+            onPress={decrementQuantity}
+            onPressIn={() => setIsDecrementPressed(true)}
+            onPressOut={() => setIsDecrementPressed(false)}
+            style={[
+              styles.quantityButton,
+              isDecrementPressed ? styles.buttonPressed : styles.buttonNormal,
+            ]}
+          >
+            <Text style={styles.quantityButtonText}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.quantityText}>{quantity}</Text>
+          <TouchableOpacity
+            onPress={incrementQuantity}
+            onPressIn={() => setIsIncrementPressed(true)}
+            onPressOut={() => setIsIncrementPressed(false)}
+            style={[
+              styles.quantityButton,
+              isIncrementPressed ? styles.buttonPressed : styles.buttonNormal,
+            ]}
+          >
+            <Text style={styles.quantityButtonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      <Text style={styles.descricaoText}>{planta.descricao}</Text>
+      <View style={styles.cartBar}>
+        <View style={styles.containerCartBar}>
+          <Text>Total price</Text>
+          <Text style={styles.cartTotal}>${planta.preco * quantity}</Text>
+        </View>
+        <AddToCartButton style={styles.addToCartButton} onPress={() => {}} />
+      </View>
     </View>
   );
 }
@@ -21,6 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: GlobalStyles.colors.primaryBackground,
+    paddingBottom: 70,
   },
   imageContainer: {
     width: '100%',
@@ -29,6 +107,84 @@ const styles = StyleSheet.create({
   imagem: {
     width: '100%',
     height: '100%',
+  },
+  textContainer: {
+    fontSize: 28,
+    marginHorizontal: 24,
+  },
+  precoo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  precoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 24,
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  quantityButton: {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 15,
+  },
+  quantityButtonText: {
+    fontSize: 20,
+    color: GlobalStyles.colors.primaryColor,
+  },
+  quantityText: {
+    fontSize: 16,
+    marginHorizontal: 10,
+  },
+  buttonNormal: {
+    backgroundColor: 'white',
+    borderColor: GlobalStyles.colors.primaryColor,
+    borderWidth: 1,
+  },
+  buttonPressed: {
+    backgroundColor: GlobalStyles.colors.primaryColor,
+  },
+  descricaoText: {
+    marginHorizontal: 24,
+  },
+  containerCartBar: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  cartBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    borderTopWidth: 1,
+    borderTopColor: '#e5e5e5',
+    backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 80,
+  },
+  cartTotal: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  addToCartButton: {
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    backgroundColor: GlobalStyles.colors.primaryColor,
+    borderRadius: 8,
+  },
+  addToCartText: {
+    color: GlobalStyles.colors.primary0,
+    fontSize: 16,
   },
 });
 
