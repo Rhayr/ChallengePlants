@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
-import { useFavorites } from '../data/FavoriteContext';
+import { useFavorites } from '../contexts/favoriteContext';
 import PlantFavorite from '../../components/plantItemFavorite';
 import { GlobalStyles } from '../../constants/styles';
 

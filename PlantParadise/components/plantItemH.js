@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFavorites } from '../src/data/FavoriteContext';
+import { useFavorites } from '../src/contexts/favoriteContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';

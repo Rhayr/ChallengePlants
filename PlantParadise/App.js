@@ -1,5 +1,5 @@
 import React from 'react';
-import { FavoriteProvider } from './src/data/FavoriteContext';
+import { FavoriteProvider } from './src/contexts/favoriteContext';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useFavorites } from '../data/FavoriteContext';
+import { useFavorites } from '../contexts/favoriteContext';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import AddToCartButton from '../../components/atomns/cartButton';
 import { GlobalStyles } from '../../constants/styles';
