@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFavorites } from '../contexts/favoriteContext';
+import { useCart } from '../contexts/cartContext';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import AddToCartButton from '../../components/atomns/cartButton';
 import { GlobalStyles } from '../../constants/styles';
@@ -8,11 +9,20 @@ import { FontAwesome } from '@expo/vector-icons';
 function PlantDetail({ navigation, route }) {
   const { planta } = route.params;
   const { favorites, toggleFavorite } = useFavorites();
+
+  const { addToCart } = useCart();
+
   const isPlantFavorited = favorites.some((fav) => fav.id === planta.id);
   const [isFavorited, setIsFavorited] = useState(isPlantFavorited);
   const [quantity, setQuantity] = useState(1);
   const [isIncrementPressed, setIsIncrementPressed] = useState(false);
   const [isDecrementPressed, setIsDecrementPressed] = useState(false);
+
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addToCart(planta);
+    }
+  };
 
   const incrementQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -98,7 +108,10 @@ function PlantDetail({ navigation, route }) {
             ${(planta.preco * quantity).toFixed(2)}
           </Text>
         </View>
-        <AddToCartButton style={styles.addToCartButton} onPress={() => {}} />
+        <AddToCartButton
+          style={styles.addToCartButton}
+          onPress={handleAddToCart}
+        />
       </View>
     </View>
   );

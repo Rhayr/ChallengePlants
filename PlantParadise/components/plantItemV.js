@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFavorites } from '../src/contexts/favoriteContext';
+import { useCart } from '../src/contexts/cartContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
@@ -7,9 +8,18 @@ import { FontAwesome } from '@expo/vector-icons';
 
 function PlantItemVertical({ planta }) {
   const { favorites, toggleFavorite } = useFavorites();
+  const { cart, addToCart, removeFromCart } = useCart();
+  const isInCart = cart.some((item) => item.id === planta.id);
   const isFavorited = favorites.some((fav) => fav.id === planta.id);
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
   const navigation = useNavigation();
+
+  const handleCartToggle = () => {
+    if (isInCart) {
+      removeFromCart(planta.id);
+    } else {
+      addToCart(planta);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -35,16 +45,13 @@ function PlantItemVertical({ planta }) {
       </View>
 
       <View
-        style={[
-          styles.cartButton,
-          isAddedToCart ? styles.cartButtonSelected : {},
-        ]}
+        style={[styles.cartButton, isInCart ? styles.cartButtonSelected : {}]}
       >
-        <TouchableOpacity onPress={() => setIsAddedToCart(!isAddedToCart)}>
+        <TouchableOpacity onPress={handleCartToggle}>
           <FontAwesome
             name="shopping-cart"
             size={22}
-            color={isAddedToCart ? 'white' : 'black'}
+            color={isInCart ? 'white' : 'black'}
           />
         </TouchableOpacity>
       </View>

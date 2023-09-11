@@ -1,5 +1,6 @@
 import React from 'react';
 import { FavoriteProvider } from './src/contexts/favoriteContext';
+import { CartProvider } from './src/contexts/cartContext';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -79,24 +80,26 @@ function HomeTab() {
 export default function App() {
   return (
     <>
-      <FavoriteProvider>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Inicial"
-              component={Initial}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Home"
-              component={HomeTab}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen name="Details" component={Details} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </FavoriteProvider>
+      <CartProvider>
+        <FavoriteProvider>
+          <StatusBar style="auto" />
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="Inicial"
+                component={Initial}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Home"
+                component={HomeTab}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="Details" component={Details} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </FavoriteProvider>
+      </CartProvider>
     </>
   );
 }

@@ -1,17 +1,14 @@
 import React from 'react';
-import { useFavorites } from '../src/contexts/favoriteContext';
 import { useCart } from '../src/contexts/cartContext';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
-import AddToCartButton from './atomns/cartButton';
 
-function PlantItemHorizontal({ planta }) {
-  const { favorites, toggleFavorite } = useFavorites();
-  const isFavorited = favorites.some((fav) => fav.id === planta.id);
+function PlantItemCart({ planta }) {
+  const { cart, removeFromCart } = useCart();
+  const isInCart = cart.some((item) => item.id === planta.id);
   const navigation = useNavigation();
-  const { addToCart } = useCart();
 
   return (
     <View style={styles.container}>
@@ -25,15 +22,13 @@ function PlantItemHorizontal({ planta }) {
           <Text style={styles.preco}>${planta.preco.toFixed(2)}</Text>
         </View>
       </TouchableOpacity>
-      <View style={styles.addToCartButtonContainer}>
-        <AddToCartButton onPress={() => addToCart(planta)} />
-      </View>
-      <View style={styles.favoriteIconContainer}>
-        <TouchableOpacity onPress={() => toggleFavorite(planta)}>
+
+      <View style={styles.removeIconContainer}>
+        <TouchableOpacity onPress={() => removeFromCart(planta.id)}>
           <FontAwesome
-            name={isFavorited ? 'heart' : 'heart-o'}
+            name="trash-o"
             size={22}
-            color={isFavorited ? GlobalStyles.colors.primaryColor : 'black'}
+            color={GlobalStyles.colors.primaryColor}
           />
         </TouchableOpacity>
       </View>
@@ -44,18 +39,18 @@ function PlantItemHorizontal({ planta }) {
 const styles = StyleSheet.create({
   container: {
     margin: 8,
-    backgroundColor: GlobalStyles.colors.primary0,
+    backgroundColor: GlobalStyles.colors.secondaryBackground,
     borderRadius: 8,
-    elevation: 3,
-    height: 140,
+    height: 72,
     marginLeft: 24,
   },
   infoContainer: {
     flexDirection: 'row',
+    height: 72,
   },
   imagem: {
-    width: 150,
-    height: 140,
+    width: 92,
+    height: '100%',
     borderRadius: 8,
   },
   textContainer: {
@@ -64,7 +59,6 @@ const styles = StyleSheet.create({
   },
   nome: {
     fontSize: 16,
-
     marginLeft: 8,
     paddingVertical: 8,
     marginRight: 64,
@@ -73,10 +67,10 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontWeight: 'bold',
   },
-  favoriteIconContainer: {
+  removeIconContainer: {
     position: 'absolute',
-    top: 10,
-    left: 10,
+    bottom: 17,
+    right: 20,
     width: 40,
     height: 40,
     backgroundColor: 'white',
@@ -85,13 +79,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 5,
   },
-  addToCartButtonContainer: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 });
 
-export default PlantItemHorizontal;
+export default PlantItemCart;
