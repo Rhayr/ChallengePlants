@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.secondaryBackground,
     borderRadius: 8,
     height: 72,
-    marginLeft: 24,
+    marginHorizontal: 24,
   },
   infoContainer: {
     flexDirection: 'row',
