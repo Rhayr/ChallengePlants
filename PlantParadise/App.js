@@ -10,6 +10,8 @@ import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
 
 import Initial from './src/screens/initial';
+import SignIn from './src/screens/signin';
+import SignUp from './src/screens/signup';
 import Home from './src/screens/home';
 import Details from './src/screens/details';
 import Favorites from './src/screens/favorites';
@@ -73,6 +75,10 @@ function HomeTab() {
           tabBarIcon: ({ color }) => (
             <Ionicons name="cart" size={30} color={color} />
           ),
+          headerStyle: {
+            borderBottomWidth: 0,
+            elevation: 0,
+          },
         }}
       />
     </BottomTabs.Navigator>
@@ -91,6 +97,16 @@ export default function App() {
                 name="Inicial"
                 component={Initial}
                 options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="SignIn"
+                component={SignIn}
+                options={{ title: 'Sign In', headerTitleAlign: 'center' }}
+              />
+              <Stack.Screen
+                name="SignUp"
+                component={SignUp}
+                options={{ title: 'Sign Up', headerTitleAlign: 'center' }}
               />
               <Stack.Screen
                 name="Home"

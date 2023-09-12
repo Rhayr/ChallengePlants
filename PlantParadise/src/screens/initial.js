@@ -6,8 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 
 function Initial() {
   const navigation = useNavigation();
-  const navegarParaHome = () => {
-    navigation.navigate('Home');
+  const navegarParaSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+  const navegarParaSignUp = () => {
+    navigation.navigate('SignUp');
   };
 
   return (
@@ -28,10 +31,10 @@ function Initial() {
           </Text>
         </View>
       </View>
-      <Button onClick={navegarParaHome} style={styles.buttonSigns}>
+      <Button onClick={navegarParaSignIn} style={styles.buttonSigns}>
         Sign In
       </Button>
-      <Button onClick={navegarParaHome} style={styles.buttonSigns}>
+      <Button onClick={navegarParaSignUp} style={styles.buttonSigns}>
         Sign Up
       </Button>
     </View>
