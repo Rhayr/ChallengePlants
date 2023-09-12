@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContextProvider from './src/contexts/auth-context';
 import { FavoriteProvider } from './src/contexts/favoriteContext';
 import { CartProvider } from './src/contexts/cartContext';
 import { StatusBar } from 'expo-status-bar';
@@ -8,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
 import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
+import { AuthContext } from './src/contexts/auth-context';
 
 import Initial from './src/screens/initial';
 import SignIn from './src/screens/signin';
@@ -85,40 +87,64 @@ function HomeTab() {
   );
 }
 
-export default function App() {
+function AuthStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Inicial"
+        component={Initial}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{ title: 'Sign In', headerTitleAlign: 'center' }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{ title: 'Sign Up', headerTitleAlign: 'center' }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function AuthenticatedStack() {
+  return (
+    <CartProvider>
+      <FavoriteProvider>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeTab}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Details" component={Details} />
+        </Stack.Navigator>
+      </FavoriteProvider>
+    </CartProvider>
+  );
+}
+
+function Navigation() {
+  const authCtx = useContext(AuthContext);
+
   return (
     <>
-      <CartProvider>
-        <FavoriteProvider>
-          <StatusBar style="auto" />
-          <NavigationContainer>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="Inicial"
-                component={Initial}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="SignIn"
-                component={SignIn}
-                options={{ title: 'Sign In', headerTitleAlign: 'center' }}
-              />
-              <Stack.Screen
-                name="SignUp"
-                component={SignUp}
-                options={{ title: 'Sign Up', headerTitleAlign: 'center' }}
-              />
-              <Stack.Screen
-                name="Home"
-                component={HomeTab}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen name="Details" component={Details} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </FavoriteProvider>
-      </CartProvider>
+      {!authCtx.isAuthenticated && <AuthStack />}
+      {authCtx.isAuthenticated && <AuthenticatedStack />}
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthContextProvider>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </AuthContextProvider>
   );
 }
 

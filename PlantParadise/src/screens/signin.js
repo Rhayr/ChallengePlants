@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   View,
@@ -6,10 +6,13 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Button from '../../components/atomns/button';
 import { GlobalStyles } from '../../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
+import { login } from '../util/auth';
+import { AuthContext } from '../contexts/auth-context';
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -17,6 +20,8 @@ export default function SignIn() {
   const navegarParaHome = () => {
     navigation.navigate('Home');
   };
+
+  const authCtx = useContext(AuthContext);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -34,10 +39,33 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //const handleSubmit = () => {
-  //  console.log(email, password);
-  // };
+  const emailIsValid = email.includes('@');
+  const passwordIsValid = password.length > 6;
 
+  const handleSubmit = async () => {
+    if (!emailIsValid) {
+      Alert.alert('Invalid Email', 'Please enter a valid email address.');
+      return;
+    }
+
+    if (!passwordIsValid) {
+      Alert.alert(
+        'Invalid Password',
+        'Password should be more than 6 characters.'
+      );
+      return;
+    }
+
+    try {
+      const token = await login(email, password);
+      authCtx.authenticate(token);
+    } catch (error) {
+      Alert.alert(
+        'Login Failed',
+        'Please check your credentials or try again later.'
+      );
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.label}>E-MAIL</Text>
@@ -46,6 +74,7 @@ export default function SignIn() {
         onChangeText={setEmail}
         placeholder="Type your e-mail"
         style={styles.input}
+        keyboardType="email-address"
       />
 
       <Text style={styles.label}>PASSWORD</Text>
@@ -57,7 +86,7 @@ export default function SignIn() {
         style={styles.input}
       />
 
-      <Button onClick={navegarParaHome} style={styles.buttonSigns}>
+      <Button onClick={handleSubmit} style={styles.buttonSigns}>
         Sign In
       </Button>
     </View>

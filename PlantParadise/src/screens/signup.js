@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../contexts/auth-context';
+import { createUser } from '../util/auth';
 import {
   View,
   TextInput,
   Text,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Button from '../../components/atomns/button';
 import { GlobalStyles } from '../../constants/styles';
@@ -13,7 +16,10 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function SignUp() {
   const navigation = useNavigation();
-  const navegarParaSignIn = () => {
+
+  const authCtx = useContext(AuthContext);
+
+  const navigateToSignIn = () => {
     navigation.navigate('SignIn');
   };
 
@@ -34,13 +40,37 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = () => {
-    if (password !== confirmPassword) {
-      alert('As senhas não coincidem!');
+  const isEmailValid = email.includes('@');
+  const isPasswordValid = password.length > 6;
+
+  const handleSubmit = async () => {
+    if (!isEmailValid) {
+      Alert.alert('Invalid E-mail', 'Please, enter a valid e-mail address.');
       return;
     }
 
-    console.log(email, password);
+    if (!isPasswordValid) {
+      Alert.alert(
+        'Invalid Password',
+        'The password must have more than 6 characters.'
+      );
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Confirmation Error', 'Passwords do not match!');
+      return;
+    }
+
+    try {
+      const token = await createUser(email, password);
+      authCtx.authenticate(token);
+    } catch (error) {
+      Alert.alert(
+        'Registration Error',
+        'There was an error during registration. Please try again later.'
+      );
+    }
   };
 
   return (
@@ -51,6 +81,7 @@ export default function SignUp() {
         onChangeText={setEmail}
         placeholder="Type your e-mail address"
         style={styles.input}
+        keyboardType="email-address"
       />
       <Text style={styles.label}>PASSWORD</Text>
       <TextInput
@@ -68,7 +99,7 @@ export default function SignUp() {
         secureTextEntry={true}
         style={styles.input}
       />
-      <Button onClick={navegarParaSignIn} style={styles.buttonSigns}>
+      <Button onClick={handleSubmit} style={styles.buttonSigns}>
         Sign Up
       </Button>
     </View>
