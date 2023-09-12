@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginTop: 50,
+    fontFamily: 'PoppinsRegular',
   },
   subtotalContainer: {
     backgroundColor: GlobalStyles.colors.secondaryBackground,
@@ -71,10 +72,12 @@ const styles = StyleSheet.create({
   },
   subtotalText: {
     fontSize: 16,
+    fontFamily: 'PoppinsRegular',
   },
   subtotalAmount: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily: 'PoppinsRegular',
   },
   buttonSigns: {
     backgroundColor: GlobalStyles.colors.primaryColor,

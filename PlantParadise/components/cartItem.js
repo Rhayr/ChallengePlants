@@ -113,26 +113,26 @@ const styles = StyleSheet.create({
   nome: {
     fontSize: 16,
     marginLeft: 8,
-    paddingVertical: 8,
-    marginRight: 64,
+    paddingTop: 8,
+    fontFamily: 'PoppinsRegular',
   },
   preco: {
     marginLeft: 8,
     fontWeight: 'bold',
+    fontFamily: 'PoppinsRegular',
   },
   quantityContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 10,
+    fontFamily: 'PoppinsRegular',
   },
-  quantityChange: {
-    fontSize: 15,
-    paddingHorizontal: 8,
-  },
+
   quantityText: {
     fontSize: 16,
     marginHorizontal: 5,
     fontWeight: 'bold',
+    fontFamily: 'PoppinsRegular',
   },
   trashButton: {
     marginLeft: 10,

@@ -80,11 +80,11 @@ const styles = StyleSheet.create({
   },
   nome: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'PoppinsBold',
   },
   preco: {
     fontSize: 14,
-    marginTop: 5,
+    fontFamily: 'PoppinsRegular',
   },
   favoriteIconContainer: {
     position: 'absolute',

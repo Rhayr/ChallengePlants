@@ -41,7 +41,7 @@ function PlantDetail({ navigation, route }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             name="angle-left"
-            size={30}
+            size={36}
             color="#000"
             style={{ marginLeft: 15 }}
           />

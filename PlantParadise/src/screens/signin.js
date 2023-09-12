@@ -26,7 +26,7 @@ export default function SignIn() {
           onPress={() => navigation.goBack()}
           style={{ marginLeft: 10 }}
         >
-          <FontAwesome name="angle-left" size={26} color="black" />
+          <FontAwesome name="angle-left" size={36} color="black" />
         </TouchableOpacity>
       ),
     });
@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 4,
     color: 'gray',
+    fontFamily: 'PoppinsRegular',
   },
   input: {
     height: 50,
@@ -108,6 +109,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     color: 'black',
+    fontFamily: 'PoppinsRegular',
   },
   buttonSigns: {
     backgroundColor: GlobalStyles.colors.primaryColor,

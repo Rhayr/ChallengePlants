@@ -14,7 +14,7 @@ export default function Profile() {
           onPress={() => navigation.goBack()}
           style={{ marginLeft: 10 }}
         >
-          <FontAwesome name="angle-left" size={26} color="black" />
+          <FontAwesome name="angle-left" size={36} color="black" />
         </TouchableOpacity>
       ),
     });
@@ -30,7 +30,7 @@ export default function Profile() {
         </View>
       </View>
       <View style={styles.cartBar}>
-        <Text style={styles.cartTotal}>Sign out</Text>
+        <Text style={styles.sign}>Sign out</Text>
       </View>
     </View>
   );
@@ -59,12 +59,13 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'PoppinsBold',
   },
   userEmail: {
     fontSize: 14,
     color: 'gray',
     marginTop: 10,
+    fontFamily: 'PoppinsRegular',
   },
   cartBar: {
     flexDirection: 'row',
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
     right: 0,
     height: '83%',
   },
-  cartTotal: {
+  sign: {
     fontSize: 18,
+    fontFamily: 'PoppinsRegular',
   },
 });

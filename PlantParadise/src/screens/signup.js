@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-
 import { createUser } from '../util/auth';
 import {
   View,
@@ -24,7 +23,7 @@ export default function SignUp() {
           onPress={() => navigation.goBack()}
           style={{ marginLeft: 10 }}
         >
-          <FontAwesome name="angle-left" size={26} color="black" />
+          <FontAwesome name="angle-left" size={36} color="black" />
         </TouchableOpacity>
       ),
     });
@@ -114,6 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 4,
     color: 'gray',
+    fontFamily: 'PoppinsRegular',
   },
   input: {
     height: 50,
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 10,
     borderRadius: 10,
+    fontFamily: 'PoppinsRegular',
   },
   buttonSigns: {
     backgroundColor: GlobalStyles.colors.primaryColor,

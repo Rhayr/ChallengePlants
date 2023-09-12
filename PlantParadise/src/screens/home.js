@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 24,
-    marginTop: 60,
+    marginTop: 40,
     justifyContent: 'space-between',
   },
   userIconContainer: {
@@ -122,12 +122,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    fontFamily: 'PoppinsBold',
   },
   subtitle: {
     fontSize: 20,
     marginLeft: 24,
     marginBottom: 16,
-    marginTop: 30,
+    marginTop: 10,
+    fontFamily: 'PoppinsBold',
   },
   categoryContainer: {
     flexDirection: 'row',
@@ -135,6 +137,7 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 16,
+    fontFamily: 'PoppinsRegular',
     color: 'grey',
     marginHorizontal: 24,
   },

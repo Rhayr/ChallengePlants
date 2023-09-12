@@ -49,16 +49,17 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.primary0,
   },
   imagem: {
-    height: 372,
+    height: 350,
     width: '100%',
   },
   title: {
     fontSize: 50,
-    fontStyle: 'normal',
+    fontFamily: 'PoppinsBold',
   },
   subtitle: {
     fontSize: 18,
-    marginBottom: 20,
+    fontFamily: 'PoppinsRegular',
+    marginBottom: 4,
   },
   texts: {
     paddingLeft: 24,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   buttonSigns: {
     backgroundColor: GlobalStyles.colors.primaryColor,
     marginHorizontal: 24,
-    marginVertical: 8,
+    margin: 8,
     borderRadius: 8,
   },
 });

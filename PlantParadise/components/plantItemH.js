@@ -63,15 +63,16 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   nome: {
-    fontSize: 16,
-
+    fontSize: 14,
+    fontFamily: 'PoppinsRegular',
     marginLeft: 8,
     paddingVertical: 8,
     marginRight: 64,
   },
   preco: {
     marginLeft: 8,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontFamily: 'PoppinsBold',
   },
   favoriteIconContainer: {
     position: 'absolute',

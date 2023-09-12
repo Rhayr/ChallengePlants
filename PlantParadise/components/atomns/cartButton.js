@@ -13,14 +13,13 @@ function AddToCartButton({ onPress, style }) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: GlobalStyles.colors.primaryColor,
-    paddingVertical: 3,
     paddingHorizontal: 27,
-    marginRight: 8,
     borderRadius: 12,
   },
   text: {
     color: 'white',
     textAlign: 'center',
+    fontFamily: 'PoppinsRegular',
   },
 });
 

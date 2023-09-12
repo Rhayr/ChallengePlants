@@ -6,10 +6,15 @@ import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
 import { AuthContext } from './src/contexts/auth-context';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
 
 import Initial from './src/screens/initial';
 import SignIn from './src/screens/signin';
@@ -58,7 +63,11 @@ function HomeTab() {
         options={{
           headerShown: true,
           headerTitleAlign: 'left',
-          headerTitleStyle: { fontSize: 24, marginLeft: 10 },
+          headerTitleStyle: {
+            fontSize: 24,
+            marginLeft: 10,
+            fontFamily: 'PoppinsBold',
+          },
           tabBarIcon: ({ color }) => (
             <Ionicons name="heart" size={30} color={color} />
           ),
@@ -74,7 +83,12 @@ function HomeTab() {
         options={{
           headerShown: true,
           headerTitleAlign: 'left',
-          headerTitleStyle: { fontSize: 24, marginLeft: 10 },
+          headerTitleStyle: {
+            fontSize: 24,
+            marginLeft: 10,
+
+            fontFamily: 'PoppinsBold',
+          },
           tabBarIcon: ({ color }) => (
             <Ionicons name="cart" size={30} color={color} />
           ),
@@ -99,12 +113,27 @@ function AuthStack() {
       <Stack.Screen
         name="SignIn"
         component={SignIn}
-        options={{ title: 'Sign In', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Sign In',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 14,
+            fontFamily: 'PoppinsBold',
+          },
+        }}
       />
       <Stack.Screen
         name="SignUp"
         component={SignUp}
-        options={{ title: 'Sign Up', headerTitleAlign: 'center' }}
+        options={{
+          title: 'Sign Up',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 14,
+            marginLeft: 10,
+            fontFamily: 'PoppinsBold',
+          },
+        }}
       />
     </Stack.Navigator>
   );
@@ -144,6 +173,16 @@ function Navigation() {
 }
 
 export default function App() {
+  const [LoadedFont] = useFonts({
+    PoppinsRegular: Poppins_400Regular,
+    PoppinsBold: Poppins_700Bold,
+  });
+
+  if (!LoadedFont) {
+    return;
+    <View />;
+  }
+
   return (
     <AuthContextProvider>
       <StatusBar style="auto" />
