@@ -3,9 +3,16 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { GlobalStyles } from '../../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
+import { AuthContext } from '../contexts/auth-context';
 
 export default function Profile() {
   const navigation = useNavigation();
+
+  const auth = React.useContext(AuthContext);
+  const handleLogout = () => {
+    auth.logout();
+    navigation.navigate('Initial');
+  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,7 +37,9 @@ export default function Profile() {
         </View>
       </View>
       <View style={styles.cartBar}>
-        <Text style={styles.sign}>Sign out</Text>
+        <TouchableOpacity onPress={handleLogout}>
+          <Text style={styles.sign}>Sign out</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
