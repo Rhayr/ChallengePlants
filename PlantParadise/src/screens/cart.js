@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, Alert } from 'react-native';
 import { useCart } from '../contexts/cartContext';
 import PlantItemCart from '../../components/cartItem';
 import { GlobalStyles } from '../../constants/styles';
-import Button from '../../components/atomns/button';
+import Button2 from '../../components/atomns/button2';
 
 function CartScreen() {
   const { cart, clearCart } = useCart();
@@ -36,9 +36,9 @@ function CartScreen() {
             <Text style={styles.subtotalAmount}>${subtotal}</Text>
           </View>
           <View>
-            <Button onClick={handleCheckout} style={styles.buttonSigns}>
+            <Button2 onClick={handleCheckout} style={styles.buttonSigns}>
               Go to Checkout
-            </Button>
+            </Button2>
           </View>
         </>
       ) : (

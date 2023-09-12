@@ -19,21 +19,9 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id) => {
-    setCart((prevCart) => {
-      const itemIndex = prevCart.findIndex((item) => item.id === id);
-
-      if (itemIndex === -1) return prevCart;
-
-      if (prevCart[itemIndex].quantity > 1) {
-        const newCart = [...prevCart];
-        newCart[itemIndex].quantity -= 1;
-        return newCart;
-      }
-
-      return prevCart.filter((item) => item.id !== id);
-    });
-  };
+  function removeFromCart(itemId) {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  }
 
   const increaseQuantity = (id) => {
     setCart((prevCart) => {
