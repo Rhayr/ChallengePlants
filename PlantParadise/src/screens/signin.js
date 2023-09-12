@@ -14,6 +14,10 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function SignIn() {
   const navigation = useNavigation();
 
+  const navegarParaHome = () => {
+    navigation.navigate('Home');
+  };
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -30,9 +34,9 @@ export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () => {
-    console.log(email, password);
-  };
+  //const handleSubmit = () => {
+  //  console.log(email, password);
+  // };
 
   return (
     <View style={styles.container}>
@@ -53,7 +57,7 @@ export default function SignIn() {
         style={styles.input}
       />
 
-      <Button onPress={handleSubmit} style={styles.buttonSigns}>
+      <Button onClick={navegarParaHome} style={styles.buttonSigns}>
         Sign In
       </Button>
     </View>

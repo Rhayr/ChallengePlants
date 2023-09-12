@@ -13,6 +13,10 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function SignUp() {
   const navigation = useNavigation();
+  const navegarParaSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -64,7 +68,7 @@ export default function SignUp() {
         secureTextEntry={true}
         style={styles.input}
       />
-      <Button onPress={handleSubmit} style={styles.buttonSigns}>
+      <Button onClick={navegarParaSignIn} style={styles.buttonSigns}>
         Sign Up
       </Button>
     </View>
