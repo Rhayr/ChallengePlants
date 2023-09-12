@@ -53,7 +53,7 @@ function HomeTab() {
         options={{
           headerShown: true,
           headerTitleAlign: 'left',
-          headerTitleStyle: { fontSize: 24 },
+          headerTitleStyle: { fontSize: 24, marginLeft: 10 },
           tabBarIcon: ({ color }) => (
             <Ionicons name="heart" size={30} color={color} />
           ),
@@ -68,6 +68,8 @@ function HomeTab() {
         component={Cart}
         options={{
           headerShown: true,
+          headerTitleAlign: 'left',
+          headerTitleStyle: { fontSize: 24, marginLeft: 10 },
           tabBarIcon: ({ color }) => (
             <Ionicons name="cart" size={30} color={color} />
           ),
