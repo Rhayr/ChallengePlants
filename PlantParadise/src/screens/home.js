@@ -5,7 +5,9 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { GlobalStyles } from '../../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 import plants from '../data/data';
@@ -15,17 +17,25 @@ import PlantItemVertical from '../../components/plantItemV';
 function Home() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const navigation = useNavigation();
+  const handleProfileIconClick = () => {
+    navigation.navigate('Profile');
+  };
+
   const filteredPlants = plants.filter((plant) => {
     if (selectedCategory === 'All') return true;
     return plant.categoria === selectedCategory;
   });
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} overScrollMode="never">
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Hi, John</Text>
-        <View style={styles.userIconContainer}>
+        <Text style={styles.title}>Hi, user!</Text>
+        <TouchableOpacity
+          onPress={handleProfileIconClick}
+          style={styles.userIconContainer}
+        >
           <FontAwesome name="user" size={24} color="black" />
-        </View>
+        </TouchableOpacity>
       </View>
       <View>
         <Text style={styles.subtitle}>Most popular</Text>
@@ -82,7 +92,7 @@ function Home() {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

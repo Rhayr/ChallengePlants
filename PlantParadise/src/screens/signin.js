@@ -17,10 +17,6 @@ import { AuthContext } from '../contexts/auth-context';
 export default function SignIn() {
   const navigation = useNavigation();
 
-  const navegarParaHome = () => {
-    navigation.navigate('Home');
-  };
-
   const authCtx = useContext(AuthContext);
 
   React.useLayoutEffect(() => {

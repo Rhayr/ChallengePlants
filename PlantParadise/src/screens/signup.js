@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../contexts/auth-context';
+
 import { createUser } from '../util/auth';
 import {
   View,
@@ -16,12 +16,6 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default function SignUp() {
   const navigation = useNavigation();
-
-  const authCtx = useContext(AuthContext);
-
-  const navigateToSignIn = () => {
-    navigation.navigate('SignIn');
-  };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -63,8 +57,12 @@ export default function SignUp() {
     }
 
     try {
-      const token = await createUser(email, password);
-      authCtx.authenticate(token);
+      await createUser(email, password);
+      navigation.navigate('SignIn');
+      Alert.alert(
+        'Registration Successful',
+        'You can now sign in with your new account.'
+      );
     } catch (error) {
       Alert.alert(
         'Registration Error',

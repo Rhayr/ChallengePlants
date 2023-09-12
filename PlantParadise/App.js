@@ -16,6 +16,7 @@ import SignIn from './src/screens/signin';
 import SignUp from './src/screens/signup';
 import Home from './src/screens/home';
 import Details from './src/screens/details';
+import Profile from './src/screens/profile';
 import Favorites from './src/screens/favorites';
 import Cart from './src/screens/cart';
 
@@ -120,6 +121,11 @@ function AuthenticatedStack() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
+            options={{ headerTitleAlign: 'center' }}
+          />
         </Stack.Navigator>
       </FavoriteProvider>
     </CartProvider>
