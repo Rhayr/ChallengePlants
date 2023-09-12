@@ -8,7 +8,7 @@ import { FontAwesome } from '@expo/vector-icons';
 function PlantItemCart({ planta }) {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
     useCart();
-  const isInCart = cart.some((item) => item.id === planta.id);
+
   const navigation = useNavigation();
 
   const cartItem = cart.find((item) => item.id === planta.id);
@@ -120,22 +120,6 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontWeight: 'bold',
   },
-  removeIconContainer: {
-    position: 'absolute',
-    bottom: 17,
-    right: 20,
-    width: 40,
-    height: 40,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5,
-  },
-  actionContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   quantityContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -154,9 +138,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   circleButton: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
+    width: 20,
+    height: 20,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 5,
