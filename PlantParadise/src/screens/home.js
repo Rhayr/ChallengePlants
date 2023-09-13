@@ -26,6 +26,7 @@ function Home() {
     if (selectedCategory === 'All') return true;
     return plant.categoria === selectedCategory;
   });
+
   return (
     <ScrollView style={styles.container} overScrollMode="never">
       <View style={styles.titleContainer}>

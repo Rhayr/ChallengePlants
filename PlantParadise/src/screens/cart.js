@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   },
   subtotalContainer: {
     backgroundColor: GlobalStyles.colors.secondaryBackground,
-    padding: 8,
+    paddingHorizontal: 8,
+    height: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,

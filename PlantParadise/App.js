@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, View } from 'react-native';
 import { GlobalStyles } from './constants/styles';
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { AuthContext } from './src/contexts/auth-context';
 import {
   useFonts,
@@ -69,7 +70,7 @@ function HomeTab() {
             fontFamily: 'PoppinsBold',
           },
           tabBarIcon: ({ color }) => (
-            <Ionicons name="heart" size={30} color={color} />
+            <FontAwesome name="heart-o" size={30} color={color} />
           ),
           headerStyle: {
             borderBottomWidth: 0,
@@ -149,11 +150,26 @@ function AuthenticatedStack() {
             component={HomeTab}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{
+              headerTitleStyle: {
+                fontSize: 14,
+                fontFamily: 'PoppinsBold',
+              },
+            }}
+          />
           <Stack.Screen
             name="Profile"
             component={Profile}
-            options={{ headerTitleAlign: 'center' }}
+            options={{
+              headerTitleAlign: 'center',
+              headerTitleStyle: {
+                fontSize: 14,
+                fontFamily: 'PoppinsBold',
+              },
+            }}
           />
         </Stack.Navigator>
       </FavoriteProvider>

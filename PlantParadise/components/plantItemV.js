@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 function PlantItemVertical({ planta }) {
   const { favorites, toggleFavorite } = useFavorites();
@@ -48,8 +49,8 @@ function PlantItemVertical({ planta }) {
         style={[styles.cartButton, isInCart ? styles.cartButtonSelected : {}]}
       >
         <TouchableOpacity onPress={handleCartToggle}>
-          <FontAwesome
-            name="shopping-cart"
+          <Ionicons
+            name="cart"
             size={22}
             color={isInCart ? 'white' : 'black'}
           />

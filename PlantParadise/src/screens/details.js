@@ -134,10 +134,11 @@ const styles = StyleSheet.create({
   textContainer: {
     fontSize: 28,
     marginHorizontal: 24,
+    fontFamily: 'PoppinsBold',
   },
   precoo: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'PoppinsBold',
   },
   precoContainer: {
     flexDirection: 'row',
@@ -175,6 +176,8 @@ const styles = StyleSheet.create({
   },
   descricaoText: {
     marginHorizontal: 24,
+    color: 'gray',
+    fontFamily: 'PoppinsRegular',
   },
   containerCartBar: {
     flexDirection: 'column',
