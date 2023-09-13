@@ -69,6 +69,9 @@ function PlantDetail({ navigation, route }) {
       <View style={styles.imageContainer}>
         <Image source={planta.imagem} style={styles.imagem} />
       </View>
+      <View style={styles.categoryContainer}>
+        <Text style={styles.categoryText}>{planta.category}</Text>
+      </View>
       <View>
         <Text style={styles.textContainer}>{planta.title}</Text>
       </View>
@@ -103,7 +106,7 @@ function PlantDetail({ navigation, route }) {
       <Text style={styles.descricaoText}>{planta.description}</Text>
       <View style={styles.cartBar}>
         <View style={styles.containerCartBar}>
-          <Text>Total price</Text>
+          <Text style={styles.totalText}>Total price</Text>
           <Text style={styles.cartTotal}>
             ${(planta.price * quantity).toFixed(2)}
           </Text>
@@ -136,9 +139,22 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     fontFamily: 'PoppinsBold',
   },
+  categoryContainer: {
+    marginHorizontal: 24,
+  },
+  categoryText: {
+    fontFamily: 'PoppinsRegular',
+    color: 'gray',
+    fontSize: 16,
+    marginTop: 12,
+  },
   precoo: {
     fontSize: 20,
     fontFamily: 'PoppinsBold',
+  },
+  totalText: {
+    fontFamily: 'PoppinsRegular',
+    fontSize: 12,
   },
   precoContainer: {
     flexDirection: 'row',

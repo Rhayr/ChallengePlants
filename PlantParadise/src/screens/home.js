@@ -63,21 +63,21 @@ function Home() {
               All
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setSelectedCategory('indoor')}>
+          <TouchableOpacity onPress={() => setSelectedCategory('Indoor')}>
             <Text
               style={[
                 styles.categoryText,
-                selectedCategory === 'indoor' && styles.selectedCategory,
+                selectedCategory === 'Indoor' && styles.selectedCategory,
               ]}
             >
               Indoor
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => setSelectedCategory('outdoor')}>
+          <TouchableOpacity onPress={() => setSelectedCategory('Outdoor')}>
             <Text
               style={[
                 styles.categoryText,
-                selectedCategory === 'outdoor' && styles.selectedCategory,
+                selectedCategory === 'Outdoor' && styles.selectedCategory,
               ]}
             >
               Outdoor

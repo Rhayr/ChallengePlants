@@ -5,7 +5,7 @@ const plants = [
     price: 9.25,
     description: 'Lindo para ficar em casa',
     imagem: require('../../assets/plantinha1.png'),
-    category: 'indoor',
+    category: 'Indoor',
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const plants = [
     price: 9.99,
     description: 'Uma bela planta',
     imagem: require('../../assets/plantinha2.png'),
-    category: 'outdoor',
+    category: 'Outdoor',
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const plants = [
     price: 10.5,
     description: 'Cuide de uma planta',
     imagem: require('../../assets/plantinha1.png'),
-    category: 'indoor',
+    category: 'Indoor',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const plants = [
     price: 10.5,
     description: 'Cuide de uma planta',
     imagem: require('../../assets/plantinha1.png'),
-    category: 'indoor',
+    category: 'Indoor',
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const plants = [
     price: 10.5,
     description: 'Cuide de uma planta',
     imagem: require('../../assets/plantinha1.png'),
-    category: 'indoor',
+    category: 'Indoor',
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const plants = [
     price: 9.99,
     description: 'Uma bela planta',
     imagem: require('../../assets/plantinha2.png'),
-    category: 'outdoor',
+    category: 'Outdoor',
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const plants = [
     price: 9.99,
     description: 'Uma bela planta',
     imagem: require('../../assets/plantinha2.png'),
-    category: 'outdoor',
+    category: 'Outdoor',
   },
 ];
 
