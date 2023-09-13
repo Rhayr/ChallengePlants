@@ -33,7 +33,7 @@ const plants = [
   },
   {
     id: 5,
-    name: 'Green Vines',
+    title: 'Green Vines',
     price: 10.5,
     description: 'Cuide de uma planta',
     imagem: require('../../assets/plantinha1.png'),

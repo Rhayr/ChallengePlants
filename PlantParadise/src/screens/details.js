@@ -79,27 +79,41 @@ function PlantDetail({ navigation, route }) {
         <Text style={styles.precoo}>${planta.price.toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
-            onPress={decrementQuantity}
+            style={[
+              styles.circleButton,
+              isDecrementPressed ? styles.pressed : styles.notPressed,
+            ]}
             onPressIn={() => setIsDecrementPressed(true)}
             onPressOut={() => setIsDecrementPressed(false)}
-            style={[
-              styles.quantityButton,
-              isDecrementPressed ? styles.buttonPressed : styles.buttonNormal,
-            ]}
+            onPress={decrementQuantity}
           >
-            <Text style={styles.quantityButtonText}>-</Text>
+            <FontAwesome
+              name="minus"
+              size={10}
+              color={
+                isDecrementPressed ? 'white' : GlobalStyles.colors.primaryColor
+              }
+            />
           </TouchableOpacity>
+
           <Text style={styles.quantityText}>{quantity}</Text>
+
           <TouchableOpacity
-            onPress={incrementQuantity}
+            style={[
+              styles.circleButton,
+              isIncrementPressed ? styles.pressed : styles.notPressed,
+            ]}
             onPressIn={() => setIsIncrementPressed(true)}
             onPressOut={() => setIsIncrementPressed(false)}
-            style={[
-              styles.quantityButton,
-              isIncrementPressed ? styles.buttonPressed : styles.buttonNormal,
-            ]}
+            onPress={incrementQuantity}
           >
-            <Text style={styles.quantityButtonText}>+</Text>
+            <FontAwesome
+              name="plus"
+              size={10}
+              color={
+                isIncrementPressed ? 'white' : GlobalStyles.colors.primaryColor
+              }
+            />
           </TouchableOpacity>
         </View>
       </View>
@@ -165,31 +179,15 @@ const styles = StyleSheet.create({
   quantityContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+
     marginVertical: 10,
   },
-  quantityButton: {
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 15,
-  },
-  quantityButtonText: {
-    fontSize: 20,
-    color: GlobalStyles.colors.primaryColor,
-  },
+
   quantityText: {
     fontSize: 16,
     marginHorizontal: 10,
   },
-  buttonNormal: {
-    backgroundColor: 'white',
-    borderColor: GlobalStyles.colors.primaryColor,
-    borderWidth: 1,
-  },
-  buttonPressed: {
-    backgroundColor: GlobalStyles.colors.primaryColor,
-  },
+
   descricaoText: {
     marginHorizontal: 24,
     color: 'gray',
@@ -227,6 +225,25 @@ const styles = StyleSheet.create({
   addToCartText: {
     color: GlobalStyles.colors.primary0,
     fontSize: 16,
+  },
+  circleButton: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 5,
+    borderWidth: 1,
+    borderColor: GlobalStyles.colors.primaryColor,
+  },
+  pressed: {
+    backgroundColor: GlobalStyles.colors.primaryColor,
+  },
+  notPressed: {
+    backgroundColor: 'white',
+  },
+  trashButton: {
+    marginLeft: 10,
   },
 });
 
