@@ -24,7 +24,7 @@ function Home() {
 
   const filteredPlants = plants.filter((plant) => {
     if (selectedCategory === 'All') return true;
-    return plant.categoria === selectedCategory;
+    return plant.category === selectedCategory;
   });
 
   return (

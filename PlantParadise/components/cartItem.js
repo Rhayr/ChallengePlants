@@ -16,7 +16,7 @@ function PlantItemCart({ planta }) {
 
   const [pressedButton, setPressedButton] = useState(null);
 
-  const totalPrice = (planta.preco * quantity).toFixed(2);
+  const totalPrice = (planta.price * quantity).toFixed(2);
 
   return (
     <View style={styles.container}>
@@ -26,7 +26,7 @@ function PlantItemCart({ planta }) {
       >
         <Image source={planta.imagem} style={styles.imagem} />
         <View>
-          <Text style={styles.nome}>{planta.nome}</Text>
+          <Text style={styles.nome}>{planta.title}</Text>
           <Text style={styles.preco}>${totalPrice}</Text>
         </View>
       </TouchableOpacity>

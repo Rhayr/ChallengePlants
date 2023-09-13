@@ -18,7 +18,7 @@ function CartScreen() {
   }
 
   const subtotal = cart
-    .reduce((acc, item) => acc + item.preco * item.quantity, 0)
+    .reduce((acc, item) => acc + item.price * item.quantity, 0)
     .toFixed(2);
 
   return (

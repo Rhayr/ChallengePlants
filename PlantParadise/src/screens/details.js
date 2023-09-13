@@ -70,10 +70,10 @@ function PlantDetail({ navigation, route }) {
         <Image source={planta.imagem} style={styles.imagem} />
       </View>
       <View>
-        <Text style={styles.textContainer}>{planta.nome}</Text>
+        <Text style={styles.textContainer}>{planta.title}</Text>
       </View>
       <View style={styles.precoContainer}>
-        <Text style={styles.precoo}>${planta.preco.toFixed(2)}</Text>
+        <Text style={styles.precoo}>${planta.price.toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
             onPress={decrementQuantity}
@@ -100,12 +100,12 @@ function PlantDetail({ navigation, route }) {
           </TouchableOpacity>
         </View>
       </View>
-      <Text style={styles.descricaoText}>{planta.descricao}</Text>
+      <Text style={styles.descricaoText}>{planta.description}</Text>
       <View style={styles.cartBar}>
         <View style={styles.containerCartBar}>
           <Text>Total price</Text>
           <Text style={styles.cartTotal}>
-            ${(planta.preco * quantity).toFixed(2)}
+            ${(planta.price * quantity).toFixed(2)}
           </Text>
         </View>
         <AddToCartButton

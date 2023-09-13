@@ -30,8 +30,8 @@ function PlantItemVertical({ planta }) {
       >
         <Image source={planta.imagem} style={styles.imagem} />
         <View style={styles.textContainer}>
-          <Text style={styles.nome}>{planta.nome}</Text>
-          <Text style={styles.preco}>${planta.preco.toFixed(2)}</Text>
+          <Text style={styles.nome}>{planta.title}</Text>
+          <Text style={styles.preco}>${planta.price.toFixed(2)}</Text>
         </View>
       </TouchableOpacity>
 
