@@ -67,7 +67,7 @@ function PlantDetail({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={planta.imagem} style={styles.imagem} />
+        <Image source={{ uri: planta.image }} style={styles.imagem} />
       </View>
       <View style={styles.categoryContainer}>
         <Text style={styles.categoryText}>{planta.category}</Text>

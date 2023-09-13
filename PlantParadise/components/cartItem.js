@@ -24,7 +24,7 @@ function PlantItemCart({ planta }) {
         style={styles.infoContainer}
         onPress={() => navigation.navigate('Details', { planta })}
       >
-        <Image source={planta.imagem} style={styles.imagem} />
+        <Image source={{ uri: planta.image }} style={styles.imagem} />
         <View>
           <Text style={styles.nome}>{planta.title}</Text>
           <Text style={styles.preco}>${totalPrice}</Text>
@@ -111,12 +111,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   nome: {
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 8,
     paddingTop: 8,
     fontFamily: 'PoppinsRegular',
   },
   preco: {
+    fontSize: 14,
     marginLeft: 8,
     fontWeight: 'bold',
     fontFamily: 'PoppinsRegular',
@@ -125,6 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 10,
+    marginTop: 20,
     fontFamily: 'PoppinsRegular',
   },
 
@@ -136,6 +138,7 @@ const styles = StyleSheet.create({
   },
   trashButton: {
     marginLeft: 10,
+    marginTop: 20,
   },
   circleButton: {
     width: 20,

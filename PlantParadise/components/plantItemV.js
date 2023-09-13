@@ -28,7 +28,7 @@ function PlantItemVertical({ planta }) {
         onPress={() => navigation.navigate('Details', { planta })}
         style={{ flex: 1 }}
       >
-        <Image source={planta.imagem} style={styles.imagem} />
+        <Image source={{ uri: planta.image }} style={styles.imagem} />
         <View style={styles.textContainer}>
           <Text style={styles.nome}>{planta.title}</Text>
           <Text style={styles.preco}>${planta.price.toFixed(2)}</Text>

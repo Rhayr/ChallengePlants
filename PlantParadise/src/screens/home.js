@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,11 +10,27 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { GlobalStyles } from '../../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
-import plants from '../data/data';
+//import plants from '../data/data';
 import PlantItemHorizontal from '../../components/plantItemH';
 import PlantItemVertical from '../../components/plantItemV';
 
 function Home() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('https://8jcox47hg2.execute-api.us-east-2.amazonaws.com/dev')
+      .then((response) => response.json())
+      .then((result) => {
+        setData(result.body.data.mostPopular);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Ocurred a error: ', error);
+        setLoading(false);
+      });
+  }, []);
+
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const navigation = useNavigation();
@@ -22,7 +38,7 @@ function Home() {
     navigation.navigate('Profile');
   };
 
-  const filteredPlants = plants.filter((plant) => {
+  const filteredPlants = data.filter((plant) => {
     if (selectedCategory === 'All') return true;
     return plant.category === selectedCategory;
   });
@@ -46,7 +62,7 @@ function Home() {
           <FlatList
             overScrollMode="never"
             horizontal
-            data={plants}
+            data={data}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => <PlantItemHorizontal planta={item} />}
             showsHorizontalScrollIndicator={false}
