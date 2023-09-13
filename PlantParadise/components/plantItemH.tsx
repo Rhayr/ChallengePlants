@@ -7,7 +7,17 @@ import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 import AddToCartButton from './atomns/cartButton';
 
-function PlantItemHorizontal({ planta }) {
+interface Plant {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
+interface PlantItemHProps {
+  planta: Plant;
+}
+
+function PlantItemHorizontal({ planta }: PlantItemHProps) {
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.some((fav) => fav.id === planta.id);
   const navigation = useNavigation();

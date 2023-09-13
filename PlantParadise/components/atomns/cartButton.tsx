@@ -1,8 +1,19 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import { GlobalStyles } from '../../constants/styles';
 
-function AddToCartButton({ onPress, style }) {
+interface AddToCartButtonProps {
+  onPress: () => void;
+  style?: StyleProp<ViewStyle>;
+}
+
+function AddToCartButton({ onPress, style }: AddToCartButtonProps) {
   return (
     <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
       <Text style={styles.text}>Add to cart</Text>

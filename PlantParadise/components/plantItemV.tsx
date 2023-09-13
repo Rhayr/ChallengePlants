@@ -7,7 +7,17 @@ import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
-function PlantItemVertical({ planta }) {
+interface Plant {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
+interface PlantItemVProps {
+  planta: Plant;
+}
+
+function PlantItemVertical({ planta }: PlantItemVProps) {
   const { favorites, toggleFavorite } = useFavorites();
   const { cart, addToCart, removeFromCart } = useCart();
   const isInCart = cart.some((item) => item.id === planta.id);

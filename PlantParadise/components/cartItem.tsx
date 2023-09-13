@@ -5,7 +5,18 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 
-function PlantItemCart({ planta }) {
+interface Plant {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
+
+interface PlantItemCartProps {
+  planta: Plant;
+}
+
+function PlantItemCart({ planta }: PlantItemCartProps) {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } =
     useCart();
 

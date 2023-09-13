@@ -5,7 +5,18 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { GlobalStyles } from '../constants/styles';
 import { FontAwesome } from '@expo/vector-icons';
 
-function PlantFavorite({ planta }) {
+interface Plant {
+  id: number;
+  image: string;
+  title: string;
+  price: number;
+}
+
+interface PlantFavoriteProps {
+  planta: Plant;
+}
+
+function PlantFavorite({ planta }: PlantFavoriteProps) {
   const { favorites, toggleFavorite } = useFavorites();
   const isFavorited = favorites.some((fav) => fav.id === planta.id);
   const navigation = useNavigation();

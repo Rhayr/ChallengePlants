@@ -26,7 +26,16 @@ import Profile from './src/screens/profile';
 import Favorites from './src/screens/favorites';
 import Cart from './src/screens/cart';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  Details: undefined;
+  Profile: undefined;
+  Initial: undefined;
+  SignIn: undefined;
+  SignUp: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTabs = createBottomTabNavigator();
 
 function HomeTab() {
